@@ -9,3 +9,5 @@ Home partition - rest of nvme ext4
 Root partition - ssd disk ext4
 # Use fdisk to partition
 2. Install file systems
+3. Set date
+4. Download and execute script, replace make.conf

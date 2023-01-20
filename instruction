@@ -1,0 +1,11 @@
+1. Prepare disks
+Partition
+a) Default
+Boot partition - 256Mb Efi System ext4
+Root partition - rest of space ext4
+b) asus
+Boot parition - 256Mb Efi System ext4 of nvme
+Home partition - rest of nvme ext4
+Root partition - ssd disk ext4
+# Use fdisk to partition
+2. Install file systems

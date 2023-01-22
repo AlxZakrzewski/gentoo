@@ -38,7 +38,7 @@ eselect locale set 3
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 14. Execute script to download all base packages
 ./packages_base.sh
-15. Create symbolic link with eselect
+15. Create symbolic link for kernel with eselect
 eselect kernel list
 eselect kernel set
 16. Configure kernel

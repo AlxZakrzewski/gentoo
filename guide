@@ -13,7 +13,7 @@ Data partition - SSD disk
 EFI partition must be FAT variant
 mkfs.fat -F 32 /dev/nvme0n1p1
 3. Set date
-4. Download all installation scripts - curl -JOL https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/asus/{install.sh,packages_base.sh,timezone_locale.sh}
+4. Download all installation scripts - curl -JOL "https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/asus/{install.sh,packages_base.sh,timezone_locale.sh}" && chmod +x *sh
 5. Execute install.sh script
 ./install.sh
 6. Chroot to new env

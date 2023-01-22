@@ -1,4 +1,3 @@
-go to /mnt/gentoo
 1. Prepare disks
 Partition
 a) Default
@@ -13,8 +12,10 @@ Data partition - SSD disk
 EFI partition must be FAT variant
 mkfs.fat -F 32 /dev/nvme0n1p1
 3. Set date
-4. Download all installation scripts - curl -JOL "https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/asus/{install.sh,packages_base.sh,timezone_locale.sh}" && chmod +x *sh
-5. Execute install.sh script
+4. Download installation scripts - curl -JOL "https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/asus/{install.sh,packages_base.sh,timezone_locale.sh}" && chmod +x *sh
+5.  Mount root partition and execute install.sh script
+mount /dev/nvme0n1p2 /mnt/gentoo
+cd /mnt/gentoo
 ./install.sh
 6. Chroot to new env
 chroot /mnt/gentoo /bin/bash
@@ -44,6 +45,7 @@ eselect kernel set
 16. Configure kernel
 cd /usr/src/linux
 make menuconfig
+make && make modules_install && make install
 17. Create proper /etc/fstab - use blkid
 18. Set root password
 19. Configure bootloader

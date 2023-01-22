@@ -6,8 +6,8 @@ Boot partition - 256Mb Efi System ext4
 Root partition - rest of space ext4
 b) asus
 Boot parition - 256Mb Efi System ext4 of nvme
-Home partition - rest of nvme ext4
-Root partition - ssd disk ext4
+Root partition - rest of nvme ext4
+Data partition - SSD disk
 # Use fdisk to partition
 2. Install file systems
 EFI partition must be FAT variant
@@ -58,3 +58,31 @@ emerge -q sys-apps/pciutils
 17. Configure kernel
 cd /usr/src/linux
 make menuconfig
+18. Create proper /etc/fstab - use blkid
+19. Setup network
+emerge -q net-misc/dhcpcd
+openrc:
+rc-update add dhcpcd default
+rc-service dhcpcd start
+20. Set root password
+21. Install system logger
+emerge -q app-admin/sysklogd
+openrc:
+rc-update add sysklogd default
+22. Setup time sync
+emerge -q net-misc/chrony
+rc-update add chronyd default
+23. Install vfat tools
+emerge -q sys-fs/dosfstools
+24. Install wifi tools
+emerge -q net-wireless/iw net-wireless/wpa_supplicant
+25. Configure bootloader
+emerge -q sys-boot/grub
+grub-install --target=x86_64-efi --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
+# if this fails, here is workaround https://edoceo.com/notabene/grub-probe-error-cannot-find-device-for-root
+26. Exit chroot and unmount
+exit
+umount -l /mnt/gentoo/dev{/shm,/pts,}
+umount -R /mnt/gentoo
+27. Reboot and remove usb

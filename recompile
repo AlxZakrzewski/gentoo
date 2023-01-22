@@ -1,7 +1,5 @@
 1) cd /usr/src/linux
 2) make menuconfig
 3) make && make modules_install
-4) mount /boot
-5) cp arch/my_arch/boot/bzImage /boot/vmlinuz-new-x.x.xx-gentoo
-6) reboot
-7) change file to boot in grub
+4) make install
+5) reboot

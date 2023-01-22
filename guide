@@ -10,12 +10,14 @@ Data partition - SSD disk
 # Use fdisk to partition
 2. Install file systems
 EFI partition must be FAT variant
+example:
 mkfs.fat -F 32 /dev/nvme0n1p1
 3. Set date
-4. Download installation scripts - curl -JOL "https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/asus/{install.sh,packages_base.sh,timezone_locale.sh}" && chmod +x *sh
-5.  Mount root partition and execute install.sh script
+4. Mount root partition
+example:
 mount /dev/nvme0n1p2 /mnt/gentoo
 cd /mnt/gentoo
+5. Download installation scripts for device - curl -JOL "https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/asus/{install.sh,packages_base.sh,timezone_locale.sh,.config}" && chmod +x *sh
 ./install.sh
 6. Chroot to new env
 chroot /mnt/gentoo /bin/bash
@@ -26,6 +28,7 @@ mount /dev/nvme0n1p1 /boot
 8. emerge-webrsync
 9. Choose profile from the list
 eselect profile list
+example:
 eselect profile set 3
 10. Update @world set
 emerge -q --update --deep --newuse @world
@@ -44,14 +47,13 @@ eselect kernel list
 eselect kernel set
 16. Configure kernel
 cd /usr/src/linux
-make menuconfig
+make menuconfig (or use .config file from github)
 make && make modules_install && make install
-17. Create proper /etc/fstab - use blkid
-18. Set root password
-19. Configure bootloader
+17. Configure bootloader
 grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
-# if this fails, here is workaround https://edoceo.com/notabene/grub-probe-error-cannot-find-device-for-root
+18. Create proper /etc/fstab - use blkid
+19. Set root password
 20. Exit chroot and unmount
 exit
 umount -l /mnt/gentoo/dev{/shm,/pts,}

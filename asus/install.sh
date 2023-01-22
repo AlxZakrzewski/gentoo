@@ -15,5 +15,5 @@ mount --bind /run /mnt/gentoo/run
 mount --make-slave /mnt/gentoo/run
 
 rm -f stage3-*.tar.xz
-curl -JOL "https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/asus/make.conf
+curl -JOL "https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/asus/make.conf"
 echo "y" | cp make.conf etc/portage/make.conf

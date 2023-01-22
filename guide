@@ -1,0 +1,60 @@
+go to /mnt/gentoo
+1. Prepare disks
+Partition
+a) Default
+Boot partition - 256Mb Efi System ext4
+Root partition - rest of space ext4
+b) asus
+Boot parition - 256Mb Efi System ext4 of nvme
+Home partition - rest of nvme ext4
+Root partition - ssd disk ext4
+# Use fdisk to partition
+2. Install file systems
+EFI partition must be FAT variant
+mkfs.fat -F 32 /dev/nvme0n1p1
+3. Set date
+4. Download and execute install.sh script, replace make.conf for specific device
+curl -JOL https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/install.sh
+curl -JOL https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/{{ device }}/make.conf
+echo "y" | cp make.conf etc/portage/make.conf
+5. Chroot to new env
+chroot /mnt/gentoo /bin/bash
+export PS1="(chroot) ${PS1}"
+6. Mount boot partition
+mount /dev/nvme0n1p1 /boot
+7. emerge-webrsync
+8. Choose profile from the list
+eselect profile list
+eselect profile set 3
+9. Update @world set
+emerge -q --update --deep --newuse @world
+10. Write timezine (10,11 steps for OpenRC)
+echo "Europe/Warsaw" > /etc/timezone
+11. Reconfigure timezone-data package
+emerge --config sys-libs/timezone-data
+12. Configure locale
+Add /etc/locale.gen your locale
+example:
+pl_PL.UTF-8 UTF-8
+pl_PL ISO-8859-2
+Apply locale:
+locale-gen
+Verify:
+locale -a
+13. Select locale
+eselect locale list
+eselect locale set
+14. Reload env
+env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+15. Emerge kernel source
+emerge -q sys-kernel/gentoo-sources
+16. Create symbolic link with eselect
+eselect kernel list
+eselect kernel set
+17. Install lz4 support for kernel compression
+emerge -q app-arch/lzop app-arch/lz4
+18. Install pci utils
+emerge -q sys-apps/pciutils
+17. Configure kernel
+cd /usr/src/linux
+make menuconfig

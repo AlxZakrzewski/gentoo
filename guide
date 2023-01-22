@@ -13,76 +13,45 @@ Data partition - SSD disk
 EFI partition must be FAT variant
 mkfs.fat -F 32 /dev/nvme0n1p1
 3. Set date
-4. Download and execute install.sh script, replace make.conf for specific device
-curl -JOL https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/install.sh
-curl -JOL https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/{{ device }}/make.conf
-echo "y" | cp make.conf etc/portage/make.conf
-5. Chroot to new env
+4. Download all installation scripts - curl -JOL https://raw.githubusercontent.com/AlxZakrzewski/gentoo/main/asus/{install.sh,packages_base.sh,timezone_locale.sh}
+5. Execute install.sh script
+./install.sh
+6. Chroot to new env
 chroot /mnt/gentoo /bin/bash
 export PS1="(chroot) ${PS1}"
-6. Mount boot partition
+7. Mount boot partition
+example:
 mount /dev/nvme0n1p1 /boot
-7. emerge-webrsync
-8. Choose profile from the list
+8. emerge-webrsync
+9. Choose profile from the list
 eselect profile list
 eselect profile set 3
-9. Update @world set
+10. Update @world set
 emerge -q --update --deep --newuse @world
-10. Write timezine (10,11 steps for OpenRC)
-echo "Europe/Warsaw" > /etc/timezone
-11. Reconfigure timezone-data package
-emerge --config sys-libs/timezone-data
-12. Configure locale
-Add /etc/locale.gen your locale
-example:
-pl_PL.UTF-8 UTF-8
-pl_PL ISO-8859-2
-Apply locale:
-locale-gen
-Verify:
-locale -a
-13. Select locale
+11. Timezone & Locale - execute proper script
+./timezone_locale.sh
+12. Select locale
 eselect locale list
-eselect locale set
-14. Reload env
+example:
+eselect locale set 3
+13. Reload env
 env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
-15. Emerge kernel source
-emerge -q sys-kernel/gentoo-sources
-16. Create symbolic link with eselect
+14. Execute script to download all base packages
+./packages_base.sh
+15. Create symbolic link with eselect
 eselect kernel list
 eselect kernel set
-17. Install lz4 support for kernel compression
-emerge -q app-arch/lzop app-arch/lz4
-18. Install pci utils
-emerge -q sys-apps/pciutils
-17. Configure kernel
+16. Configure kernel
 cd /usr/src/linux
 make menuconfig
-18. Create proper /etc/fstab - use blkid
-19. Setup network
-emerge -q net-misc/dhcpcd
-openrc:
-rc-update add dhcpcd default
-rc-service dhcpcd start
-20. Set root password
-21. Install system logger
-emerge -q app-admin/sysklogd
-openrc:
-rc-update add sysklogd default
-22. Setup time sync
-emerge -q net-misc/chrony
-rc-update add chronyd default
-23. Install vfat tools
-emerge -q sys-fs/dosfstools
-24. Install wifi tools
-emerge -q net-wireless/iw net-wireless/wpa_supplicant
-25. Configure bootloader
-emerge -q sys-boot/grub
+17. Create proper /etc/fstab - use blkid
+18. Set root password
+19. Configure bootloader
 grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 # if this fails, here is workaround https://edoceo.com/notabene/grub-probe-error-cannot-find-device-for-root
-26. Exit chroot and unmount
+20. Exit chroot and unmount
 exit
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
-27. Reboot and remove usb
+21. Reboot and remove usb

@@ -10,3 +10,6 @@ rc-service dhcpcd start
 eselect repository enable brave-overlay
 emaint sync -r brave-overlay
 emerge -q brave-bin
+# install alsa
+emerge -q --changed-use --deep @world
+emerge -q media-sound/alsa-utils

@@ -1,0 +1,4 @@
+1. Download diff file
+2. Put it in patches dir, for window manager for example - /etc/portage/patches/x11-wm/dwm
+3. Apply config changes in savedconfig dir /etc/portage/savedconfig/x11-wm/dwm
+4. emerge

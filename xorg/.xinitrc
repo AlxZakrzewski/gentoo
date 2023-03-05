@@ -11,10 +11,10 @@ clipmenud &
 #bind keys
 xbindkeys -f ~/.xbindkeysrc
 
-# transparency for terminal
+#transparency for terminal
 (sleep 1 && ~/git/gentoo/asus/xcompmgr.sh) &
 
-# set wallpaper
+#set wallpaper
 ~/git/gentoo/asus/fehbg.sh &
 
 exec dwm

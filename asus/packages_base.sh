@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 echo $'dev-libs/go-fuse **\nsys-fs/go-mtpfs **' > /etc/portage/package.accept_keywords
-emerge -q sys-kernel/gentoo-sources app-arch/lzop app-arch/lz5 sys-apps/pciutils net-misc/dhcpcd app-admin/sysklogd net-misc/chrony sys-fs/dosfstools net-wireless/iw net-wireless/wpa_supplicant app-editors/vim sys-boot/grub:2 dev-vcs/git sys-apps/usbutils app-admin/sudo app-eselect/eselect-repository x11-base/xorg-drivers x11-base/xorg-server x11-drivers/nvidia-drivers x11-terms/st x11-wm/dwm sys-process/htop media-sound/audacity media-sound/pulseaudio media-sound/pavucontrol media-plugins/alsa-plugins app-admin/keepassxc app-emulation/wine-vanilla app-misc/solaar sys-fs/ntfs4g media-gfx/feh sys-fs/fuse sys-fs/go-mtpfs app-text/tree net-misc/yt-dlp sys-fs/go-mtpfs x11-apps/xsetroot x11-misc/clipmenu app-misc/piper net-print/cups
+emerge -q sys-kernel/gentoo-sources app-arch/lzop app-arch/lz5 sys-apps/pciutils net-misc/dhcpcd app-admin/sysklogd net-misc/chrony sys-fs/dosfstools net-wireless/iw net-wireless/wpa_supplicant app-editors/vim sys-boot/grub:2 dev-vcs/git sys-apps/usbutils app-admin/sudo app-eselect/eselect-repository x11-base/xorg-drivers x11-base/xorg-server x11-drivers/nvidia-drivers x11-terms/st x11-wm/dwm sys-process/htop media-sound/audacity media-sound/pulseaudio media-sound/pavucontrol media-plugins/alsa-plugins app-admin/keepassxc app-emulation/wine-vanilla app-misc/solaar sys-fs/ntfs4g media-gfx/feh sys-fs/fuse sys-fs/go-mtpfs app-text/tree net-misc/yt-dlp sys-fs/go-mtpfs x11-apps/xsetroot x11-misc/clipmenu app-misc/piper net-print/cups media-gfx/flameshot
 
 rc-update add dhcpcd default
 rc-update add sysklogd default

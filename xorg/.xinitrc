@@ -8,6 +8,9 @@ done &
 #clibboard
 clipmenud &
 
+#switch escape to caps lock
+setxkbmap -option caps:escape
+
 #bind keys
 xbindkeys -f ~/.xbindkeysrc
 

@@ -1,3 +1,13 @@
+Create USB bootable stick with image - https://www.gentoo.org/downloads/
+Choose minimal installation
+
+Prerequisites:
+Setup internet connection:
+For wireless use wpa_supplicant:
+Download template file using curl:
+
+https://wiki.gentoo.org/wiki/Wpa_supplicant#WPA2_with_wpa_supplicant
+
 1. Prepare disks
 Partition
 a) Default
@@ -7,12 +17,44 @@ b) asus
 Boot parition - 256Mb Efi System ext4 of nvme
 Root partition - rest of nvme ext4
 Data partition - SSD disk
-# Use fdisk to partition
+
+Check disks with:
+lsblk
+
+Partition first disk:
+fdisk /dev/nvme0n1
+Use m for help
+Type g to create new GPT disklabel - it will remove all existing partitions.
+Create EFI system partition:
+Type n to create a new partition, followed by 1 to select the first partition. When prompted for the first sector, make sure it starts from 2048
+When prompted for the last sector, type +1G to create a partition 1 GByte in size
+Change partition type to EFI System:
+Type t and type 1 as partition type
+Create root partition:
+Type n and type 3 for Linux Filesystem type, then hit Enter twice to take the rest of remaining space
+Save the partition layout by typing w
+
+Partition second disk:
+fdisk /dev/sda
+Type g to create new GPT disklabel - it will remove all existing partitions.
+Type n and type 3 for Linux Filesystem type, then hit Enter twice to take all of the space
+Save the partition layout by typing w
+
+https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation#What_is_the_BIOS_boot_partition.3F
+
 2. Install file systems
 EFI partition must be FAT variant
 example:
 mkfs.fat -F 32 /dev/nvme0n1p1
+Second partition can ext4:
+mkfs.ext4 /dev/nvme0n1p3
+Second disk with one partition also ext4:
+mkfs.ext4 /dev/sda3
+
+https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation#Creating_file_systems
+
 3. Set date
+https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation#Downloading_the_stage_file
 4. Mount root partition
 example:
 mount /dev/nvme0n1p2 /mnt/gentoo

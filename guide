@@ -4,8 +4,7 @@ Choose minimal installation
 Prerequisites:
 Setup internet connection:
 For wireless use wpa_supplicant:
-Download template file using curl:
-
+Creare conf file like here:
 https://wiki.gentoo.org/wiki/Wpa_supplicant#WPA2_with_wpa_supplicant
 
 1. Prepare disks

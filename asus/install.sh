@@ -1,6 +1,7 @@
 #!/bin/bash
 
-wget http://gentoo.mirror.web4u.cz/releases/amd64/autobuilds/current-stage3-amd64-hardened-openrc/stage3-amd64-desktop-openrc-20230115T170214Z.tar.xz
+wget http://gentoo.mirror.web4u.cz/releases/amd64/autobuilds/current-stage3-amd64-hardened-openrc/stage3-amd64-hardened-openrc-20240128T165521Z.tar.xz
+# https://www.gentoo.org/downloads/mirrors/
 tar xpf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 mkdir --parents /mnt/gentoo/etc/portage/repos.conf
 cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf

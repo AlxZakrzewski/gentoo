@@ -1,7 +1,0 @@
-dev-libs/go-fuse **
-sys-fs/go-mtpfs **
-app-emulation/wine-staging **
-app-emulation/wine-mono **
-x11-misc/copyq **
-app-misc/piper **
-dev-libs/libratbag **

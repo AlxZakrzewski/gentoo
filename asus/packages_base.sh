@@ -1,18 +1,80 @@
 #!/bin/bash
 set -e
-echo $'dev-libs/go-fuse **\nsys-fs/go-mtpfs **' > /etc/portage/package.accept_keywords
-emerge -q sys-kernel/gentoo-sources app-arch/lzop app-arch/lz5 sys-apps/pciutils net-misc/dhcpcd app-admin/sysklogd net-misc/chrony sys-fs/dosfstools net-wireless/iw net-wireless/wpa_supplicant app-editors/vim sys-boot/grub:2 dev-vcs/git sys-apps/usbutils app-admin/sudo app-eselect/eselect-repository x11-base/xorg-drivers x11-base/xorg-server x11-drivers/nvidia-drivers x11-terms/st x11-wm/dwm sys-process/htop media-sound/audacity media-sound/pulseaudio media-sound/pavucontrol media-plugins/alsa-plugins app-admin/keepassxc app-emulation/wine-vanilla app-misc/solaar sys-fs/ntfs4g media-gfx/feh sys-fs/fuse sys-fs/go-mtpfs app-text/tree net-misc/yt-dlp sys-fs/go-mtpfs x11-apps/xsetroot x11-misc/clipmenu app-misc/piper net-print/cups media-gfx/flameshot media-video/simplescreenrecorder
 
-rc-update add dhcpcd default
-rc-update add sysklogd default
-rc-update add chronyd default
-rc-update add cupsd default
-rc-service dhcpcd start
-rc-service cupsd start
-# install brave
-eselect repository enable brave-overlay
-emaint sync -r brave-overlay
-emerge -q brave-bin
-# install alsa
-emerge -q --changed-use --deep @world
-emerge -q media-sound/alsa-utils
+#Before compiling kernel
+echo "Installing stable version of kernel.."
+#https://wiki.gentoo.org/wiki/Kernel#gentoo-sources
+emerge -q sys-kernel/gentoo-sources
+
+echo "Installing bootloader tools.."
+emerge -q sys-boot/grub:2
+
+echo "Installing utilities for fast decompression.."
+emerge -q app-arch/lzop
+emerge -q --autounmask-write --autounmask app-arch/lz4
+
+echo "Installing system tools.."
+emerge -q sys-apps/pciutils \
+          app-admin/sysklogd \
+          net-misc/chrony \
+          sys-apps/usbutils \
+          app-eselect/eselect-repository \
+          sys-process/htop
+
+echo "Installing network software.."
+emerge -q net-misc/dhcpcd \
+          net-wireless/iw \
+          net-wireless/wpa_supplicant
+
+echo "Installing filesystem tools.."
+emerge -q sys-fs/dosfstools \
+          sys-fs/ntfs3g \
+          sys-fs/fuse
+sys-fs/go-mtpfs
+
+echo "Installing code tools.."
+emerge -q app-editors/neovim
+emerge -q dev-vcs/git
+
+
+echo "Installing audio tools.."
+emerge -q media-sound/audacity \
+          media-sound/pulseaudio \
+          media-sound/pavucontrol \
+          media-plugins/alsa-plugins
+
+#After compiling kernel - uncomment
+#echo "Installing desktop environment components.."
+#emerge -q x11-base/xorg-drivers \
+#          x11-base/xorg-server \
+#          x11-terms/st \
+#          x11-wm/dwm \
+#          x11-apps/xsetroot \
+#          x11-misc/clipmenu
+#echo "Installing GPU drivers/gaming software.."
+#emerge -q x11-drivers/nvidia-drivers \
+#          app-emulation/wine-vanilla
+#
+#echo "Installing desktop apps.."
+#emerge -q app-admin/keepassxc \
+#          app-misc/solaar \
+#          media-gfx/feh \
+#          app-text/tree \
+#          net-misc/yt-dlp \
+#          app-misc/piper \
+#          net-print/cups \
+#          media-gfx/flameshot
+
+#rc-update add dhcpcd default
+#rc-update add sysklogd default
+#rc-update add chronyd default
+#rc-update add cupsd default
+#rc-service dhcpcd start
+#rc-service cupsd start
+## install brave
+#eselect repository enable brave-overlay
+#emaint sync -r brave-overlay
+#emerge -q brave-bin
+## install alsa
+#emerge -q --changed-use --deep @world
+#emerge -q media-sound/alsa-utils

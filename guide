@@ -38,7 +38,6 @@ fdisk /dev/sda
 Type g to create new GPT disklabel - it will remove all existing partitions.
 Type n and type 3 for Linux Filesystem type, then hit Enter twice to take all of the space
 Save the partition layout by typing w
-
 https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation#What_is_the_BIOS_boot_partition.3F
 
 2. Install file systems
@@ -49,7 +48,6 @@ Second partition can ext4:
 mkfs.ext4 /dev/nvme0n1p3
 Second disk with one partition also ext4:
 mkfs.ext4 /dev/sda3
-
 https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation#Creating_file_systems
 
 3. Set date
@@ -85,7 +83,7 @@ env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
 ./packages_base.sh
 15. Create symbolic link for kernel with eselect
 eselect kernel list
-eselect kernel set
+eselect kernel set 1
 16. Configure kernel
 cd /usr/src/linux
 make menuconfig (or use .config file from github)
@@ -94,6 +92,7 @@ make && make modules_install && make install
 grub-install --target=x86_64-efi --efi-directory=/boot
 grub-mkconfig -o /boot/grub/grub.cfg
 18. Create proper /etc/fstab - use blkid
+https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation#Creating_the_fstab_file
 19. Set root password
 20. Exit chroot and unmount
 exit

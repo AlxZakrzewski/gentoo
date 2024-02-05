@@ -110,8 +110,10 @@ emerge -q media-sound/audacity \
 #    ########## Installing GPU drivers/gaming software.. ##########
 #
 #"""
-#emerge -q x11-drivers/nvidia-drivers \
-#          app-emulation/wine-vanilla
+#emerge -q x11-drivers/nvidia-drivers
+#Adding USE flag for wine-vanilla
+#echo "app-emulation/wine-vanilla abi_x86_32" >> /etc/portage/package.use/wine
+#emerge -q --autounmask-write --autounmask app-emulation/wine-vanilla
 #
 #echo """
 #

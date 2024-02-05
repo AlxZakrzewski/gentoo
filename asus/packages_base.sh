@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 #Before compiling kernel
-echo "########## Installing mirrorselect and generating list of gentoo mirrors.. ##########"
+echo """
+
+    ########## Installing mirrorselect and generating list of gentoo mirrors.. ##########
+
+"""
 emerge -q app-portage/mirrorselect
 mirrorselect -s3 -b10 -D
 
@@ -34,7 +38,7 @@ echo """
 
 """
 emerge -q app-arch/lzop
-emerge -q --autounmask-write --autounmask app-arch/lz4
+emerge -q --autounmask-write --autounmask --autounmask-backtrack app-arch/lz4
 
 echo """
 
@@ -62,7 +66,7 @@ echo """
     ########## Installing filesystem tools.. ##########
 
 """
-emerge -q --autounmask-write --autounmask sys-fs/go-mtpfs
+emerge -q --autounmask-write --autounmask --autounmask-backtrack sys-fs/go-mtpfs
 emerge -q sys-fs/dosfstools \
           sys-fs/ntfs3g \
           sys-fs/fuse

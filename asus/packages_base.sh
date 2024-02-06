@@ -146,3 +146,7 @@ emerge -q media-sound/audacity \
 #emerge -q --changed-use --deep @world
 #emerge -q media-sound/alsa-utils
 #rc-update add alsasound boot
+# install steam
+# eselect repository enable steam-overlay
+# emerge --sync
+# emerge --ask --autounmask-write --autounmask --autounmask-continue games-util/steam-launcher

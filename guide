@@ -102,7 +102,7 @@ umount -R /mnt/gentoo
 22. Install packages_base.sh per pc
 23. Create user
 24. Clone gentoo repository to ~/git/gentoo
-25. Copy .bashrc from bash repo, setup git
+25. Copy .bashrc from bash repo to root and user, setup git
 26. Setup desktop env
 copy .xinitrc to home directory
 copy .xbindkeysrc to home directory

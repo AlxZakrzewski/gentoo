@@ -101,8 +101,23 @@ umount -R /mnt/gentoo
 21. Reboot and remove usb
 22. Install packages_base.sh per pc
 23. Create user
-24. Copy .bashrc from bash repo, setup git
-24. Setup desktop env
+24. Clone gentoo repository to ~/git/gentoo
+25. Copy .bashrc from bash repo, setup git
+26. Setup desktop env
 copy .xinitrc to home directory
+copy .xbindkeysrc to home directory
 add startx to .bash_profile
+27. Download wallpaper and save it as ~/x/pics/wallpapers/forest.jpg
+28. Setup dwm
 
+28. Setup browser
+Adjust settings:
+Dark theme
+Hide icons
+Change search engine
+Hide sidebar
+Install extensions:
+Dark Reader
+Vimium
+Fix make as default in Brave - https://github.com/brave/brave-browser/issues/2377#issuecomment-445977000
+Import bookmarks

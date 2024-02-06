@@ -104,7 +104,10 @@ emerge -q media-sound/audacity \
 #          x11-terms/st \
 #          x11-wm/dwm \
 #          x11-apps/xsetroot \
-#          x11-misc/clipmenu
+#          x11-misc/clipmenu \
+#          x11-apps/setxkbmap \
+#          x11-misc/xcompmgr \
+#          x11-misc/xbindkeys
 #echo """
 #
 #    ########## Installing GPU drivers/gaming software.. ##########

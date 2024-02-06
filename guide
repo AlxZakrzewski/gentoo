@@ -109,7 +109,8 @@ copy .xbindkeysrc to home directory
 add startx to .bash_profile
 27. Download wallpaper and save it as ~/x/pics/wallpapers/forest.jpg
 28. Setup dwm
-
+go to ~/git/gentoo/dwm
+run install.sh script
 28. Setup browser
 Adjust settings:
 Dark theme

@@ -7,7 +7,7 @@ index 91ab8ca..6af616e 100644
  unsigned int tabspaces = 8;
  
 +/* bg opacity */
-+float alpha = 0.8;
++float alpha = 0.6;
 +
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {

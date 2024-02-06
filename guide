@@ -111,6 +111,12 @@ add startx to .bash_profile
 28. Setup dwm
 go to ~/git/gentoo/dwm
 run install.sh script
+29. Setup St
+download font for St
+wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip -O /tmp/hack.zip && unzip -f /tmp/hack.zip -d /tmp &&
+sudo cp /tmp/ttf/* /usr/share/fonts
+go to ~/git/gentoo/st
+run install.sh script
 28. Setup browser
 Adjust settings:
 Dark theme
@@ -119,6 +125,6 @@ Change search engine
 Hide sidebar
 Install extensions:
 Dark Reader
-Vimium
+Vimium, add config for vimium - https://github.com/AlxZakrzewski/vimrc/blob/master/vimium
 Fix make as default in Brave - https://github.com/brave/brave-browser/issues/2377#issuecomment-445977000
 Import bookmarks

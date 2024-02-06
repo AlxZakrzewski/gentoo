@@ -99,3 +99,10 @@ exit
 umount -l /mnt/gentoo/dev{/shm,/pts,}
 umount -R /mnt/gentoo
 21. Reboot and remove usb
+22. Install packages_base.sh per pc
+23. Create user
+24. Copy .bashrc from bash repo, setup git
+24. Setup desktop env
+copy .xinitrc to home directory
+add startx to .bash_profile
+

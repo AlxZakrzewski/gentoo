@@ -93,7 +93,7 @@ emerge -q media-sound/audacity \
 ##Setup wifi connection - https://wiki.gentoo.org/wiki/Wpa_supplicant
 ##wpa_passphrase ssid password >> /etc/wpa_supplicant/wpa_supplicant.conf
 ##Start wpa_supplicant
-#rc-service wpa_supplicant start
+##rc-service wpa_supplicant start
 #echo """
 #
 #    ########## Installing desktop environment components.. ##########
@@ -111,7 +111,7 @@ emerge -q media-sound/audacity \
 #
 #"""
 #emerge -q x11-drivers/nvidia-drivers
-#Adding USE flag for wine-vanilla
+##Adding USE flag for wine-vanilla
 #echo "app-emulation/wine-vanilla abi_x86_32" >> /etc/portage/package.use/wine
 #emerge -q --autounmask-write --autounmask app-emulation/wine-vanilla
 #
@@ -120,13 +120,12 @@ emerge -q media-sound/audacity \
 #    ########## Installing desktop apps.. ##########
 #
 #"""
+#emerge -q --autounmask-write --autounmask --autounmask-continue app-misc/piper net-print/cups
 #emerge -q app-admin/keepassxc \
 #          app-misc/solaar \
 #          media-gfx/feh \
 #          app-text/tree \
 #          net-misc/yt-dlp \
-#          app-misc/piper \
-#          net-print/cups \
 #          media-gfx/flameshot
 
 #rc-update add dhcpcd default
@@ -137,9 +136,10 @@ emerge -q media-sound/audacity \
 #rc-service dhcpcd start
 #rc-service cupsd start
 ## install brave
-#eselect repository enable brave-overlay
-#emaint sync -r brave-overlay
+#eselect repository add brave-overlay git https://gitlab.com/jason.oliveira/brave-overlay.git
+#emerge --sync brave-overlay
 #emerge -q brave-bin
 ## install alsa
 #emerge -q --changed-use --deep @world
 #emerge -q media-sound/alsa-utils
+#rc-update add alsasound boot

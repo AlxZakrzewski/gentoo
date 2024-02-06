@@ -115,8 +115,23 @@ run install.sh script
 download font for St
 wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip -O /tmp/hack.zip && unzip -f /tmp/hack.zip -d /tmp &&
 sudo cp /tmp/ttf/* /usr/share/fonts
+go to ~/git/gentoo/scroll for st scrolling
+run sudo make clean install
 go to ~/git/gentoo/st
 run install.sh script
+30. Fix screen tearing
+sudo nvidia-settings
+check force full composition pipeline
+adjust screen resolution and refresh rate
+30. Install docker
+emerge -q app-containers/docker app-containers/docker-cli
+If anything missing in the kernel compile new one and check:
+/usr/share/docker/contrib/check-config.sh
+add docker daemon at boot 
+rc-update add docker default
+add user to docker group
+usermod -aG docker user
+https://wiki.gentoo.org/wiki/Docker
 28. Setup browser
 Adjust settings:
 Dark theme

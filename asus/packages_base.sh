@@ -151,3 +151,4 @@ emerge -q media-sound/audacity \
 # eselect repository enable steam-overlay
 # emerge --sync
 # emerge --ask --autounmask-write --autounmask --autounmask-continue games-util/steam-launcher
+## if errors appear with bad value, add user to video group

@@ -113,7 +113,7 @@ go to ~/git/gentoo/dwm
 run install.sh script
 29. Setup Alacritty
 example config toml https://gist.github.com/iuliandita/a4c1dd0e25460af91ebeeef51e0ef7ec
-download font 
+download font
 wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip -O /tmp/hack.zip && unzip -f /tmp/hack.zip -d /tmp &&
 install with building and copy to path
 https://github.com/alacritty/alacritty/blob/master/INSTALL.md
@@ -121,11 +121,17 @@ https://github.com/alacritty/alacritty/blob/master/INSTALL.md
 sudo nvidia-settings
 check force full composition pipeline
 adjust screen resolution and refresh rate
+31. Setup nvim
+copy .vimrc from repo
+https://vi.stackexchange.com/a/39957
+https://github.com/junegunn/vim-plug?tab=readme-ov-file#neovim
+install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 30. Install docker
 emerge -q app-containers/docker app-containers/docker-cli
 If anything missing in the kernel compile new one and check:
 /usr/share/docker/contrib/check-config.sh
-add docker daemon at boot 
+add docker daemon at boot
 rc-update add docker default
 add user to docker group
 usermod -aG docker user

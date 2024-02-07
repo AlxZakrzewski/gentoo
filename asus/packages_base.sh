@@ -101,7 +101,7 @@ emerge -q media-sound/audacity \
 #"""
 #emerge -q x11-base/xorg-drivers \
 #          x11-base/xorg-server \
-#          x11-terms/st \
+#          x11-terms/alacritty \
 #          x11-wm/dwm \
 #          x11-apps/xsetroot \
 #          x11-misc/clipmenu \
@@ -136,6 +136,7 @@ emerge -q media-sound/audacity \
 #rc-update add chronyd default
 #rc-update add cupsd default
 #rc-update add wpa_supplicant default
+#rc-update add bluetooth default
 #rc-service dhcpcd start
 #rc-service cupsd start
 ## install brave

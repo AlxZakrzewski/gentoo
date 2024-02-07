@@ -111,14 +111,12 @@ add startx to .bash_profile
 28. Setup dwm
 go to ~/git/gentoo/dwm
 run install.sh script
-29. Setup St
-download font for St
+29. Setup Alacritty
+example config toml https://gist.github.com/iuliandita/a4c1dd0e25460af91ebeeef51e0ef7ec
+download font 
 wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip -O /tmp/hack.zip && unzip -f /tmp/hack.zip -d /tmp &&
-sudo cp /tmp/ttf/* /usr/share/fonts
-go to ~/git/gentoo/scroll for st scrolling
-run sudo make clean install
-go to ~/git/gentoo/st
-run install.sh script
+install with building and copy to path
+https://github.com/alacritty/alacritty/blob/master/INSTALL.md
 30. Fix screen tearing
 sudo nvidia-settings
 check force full composition pipeline

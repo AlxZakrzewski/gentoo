@@ -1,6 +1,6 @@
 #!/bin/bash
 
-patch -p1 < patches/dwm-actualfullscreen-20211013-cb3f58a.patch
+#patch -p1 < patches/dwm-actualfullscreen-20211013-cb3f58a.patch
 #patch -p1 < patches/dwm-fullgaps-20200508-7b77734.diff
 
 F=config.def.h

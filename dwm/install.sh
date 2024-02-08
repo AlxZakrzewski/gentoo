@@ -5,7 +5,7 @@ patch -p1 < patches/dwm-fullgaps-20200508-7b77734.diff
 
 F=config.def.h
 sed -i s/Mod1Mask/Mod4Mask/g $F
-sed -i 's/{ "1", "2", "3", "4", "5", "6", "7", "8", "9" }/{ "1", "2", "3" }/g' $F
+sed -i 's/{ "1", "2", "3", "4", "5", "6", "7", "8", "9" }/{ "1", "2", "3", "4" }/g' $F
 sed -i 's/borderpx  = 1/borderpx  = 0/g' $F
 sed -i 's/col_cyan\[\]        = "#005577"/col_cyan\[\]        = "#24445c"/g' $F
 sed -i 's/{ "St"/{ "st-256color"/g' $F

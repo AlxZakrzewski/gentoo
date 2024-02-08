@@ -110,6 +110,9 @@ add startx to .bash_profile
 27. Download wallpaper and save it as ~/x/pics/wallpapers/forest.jpg
 28. Setup dwm
 go to ~/git/gentoo/dwm
+patch manually alpha
+patch -p1 < patches/dwm-alpha-20230401-348f655.diff
+add changes to config.def.h from rej file
 run install.sh script
 29. Setup Alacritty
 example config toml https://gist.github.com/iuliandita/a4c1dd0e25460af91ebeeef51e0ef7ec

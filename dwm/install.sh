@@ -2,6 +2,7 @@
 
 patch -p1 < patches/dwm-actualfullscreen-20211013-cb3f58a.patch
 patch -p1 < patches/dwm-fullgaps-20200508-7b77734.diff
+patch -p1 < patches/dwm-alpha-20230401-348f655.diff
 
 F=config.def.h
 sed -i s/Mod1Mask/Mod4Mask/g $F

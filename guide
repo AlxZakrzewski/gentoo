@@ -130,7 +130,7 @@ https://vi.stackexchange.com/a/39957
 https://github.com/junegunn/vim-plug?tab=readme-ov-file#neovim
 install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-30. Install docker
+32. Install docker
 emerge -q app-containers/docker app-containers/docker-cli
 If anything missing in the kernel compile new one and check:
 /usr/share/docker/contrib/check-config.sh
@@ -139,7 +139,7 @@ rc-update add docker default
 add user to docker group
 usermod -aG docker user
 https://wiki.gentoo.org/wiki/Docker
-28. Setup browser
+33. Setup browser
 Adjust settings:
 Dark theme
 Hide icons
@@ -150,3 +150,4 @@ Dark Reader
 Vimium, add config for vimium - https://github.com/AlxZakrzewski/vimrc/blob/master/vimium
 Fix make as default in Brave - https://github.com/brave/brave-browser/issues/2377#issuecomment-445977000
 Import bookmarks
+34. Adjust mouse with sudo piper
